@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,19 @@ const routes: Routes = [
         component: SigninComponent,
       },
     ],
-  },
+  },{
+    path:'',
+    redirectTo:'signup',
+    pathMatch:'full'
+  },{
+    path:'',
+    children:[
+      {
+        path:'signup',
+        component:SignupComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
