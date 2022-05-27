@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthBaseComponent } from './auth/auth-base/auth-base.component';
 import { HomeBaseComponent } from './home/home-base/home-base.component';
+import { PageNotFoundComponent } from './auth/errors/page-not-found/page-not-found.component';
+import { SettingsModule } from './settings/settings.module';
 
 const routes: Routes = [
   {
@@ -35,7 +37,16 @@ const routes: Routes = [
         loadChildren: () =>
           import('./home/home.module').then((m1) => m1.HomeModule),
       },
-    ],
+      {
+        path: 'settings',
+        loadChildren: () =>
+          import('./settings/settings.module').then((m1) => m1.SettingsModule)
+      },
+    ]
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
   },
 ];
 
